@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CrossKnowledge - Code challenge</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <style>
+        :root {
+            --border-color: rgb(234,234,234);
+            --background-color: rgb(247,247,247);
+            --font-color: rgb(91,101,115);
+            --font-color-dark: rgb(38, 46, 64);
+            --font-color-light: rgb(91,101,115);
+            --font-color-button: rgb(149, 149,149);
+        }
+        .feed {
+            font-family: Roboto;
+            max-width: 64em;
+            margin: 0 auto;
+            padding: 1em;
+            box-sizing: content-box;
+        }
+
+        .card {
+            border: solid 1px var(--border-color);
+            background: var(--background-color);
+            border-radius: 0.125em;
+        }
+
+        .card .card-header {
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+            min-height: 64px;
+            padding: 0.5em;
+            box-sizing: border-box;
+        }
+
+        .card  .card-header .title {
+            float: left;
+            padding: 1em 2em;
+        }
+
+        .card .card-header .title-name {
+            font-weight: 500;
+            padding-bottom: 2em;
+            color: var(--font-color-dark);
+        }
+
+        .card .card-header .title-duration {
+            color: var(--font-color-light);
+        }
+
+        .card .card-header .rating {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            font-size: 32px;
+            text-size-adjust: 100%;
+        }
+
+        .card .card-header .rating img {
+            max-width: 1.5em;
+            padding: 0.25em;
+        }
+
+        .card .card-content {
+            position: relative;
+        }
+
+        .card .card-content .card-image {
+            width: 100%;
+        }
+
+        .card .card-content .card-review-link {
+            width: 50%;
+            font-size: 2em;
+            border: white 4px solid;
+            padding: 1em;
+            border-radius: 2em;
+            background: var(--font-color-button);
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .card .card-content a:link.card-review-link,
+        .card .card-content a:visited.card-review-link {
+            text-decoration: none;
+            color: var(--font-color-dark);
+            position: absolute;
+            bottom: 3em;
+            right: 22.5%;
+        }
+
+        .card .card-info {
+            color: var(--font-color-light);
+            margin: 1em 2em;
+            padding: 2em 0;
+        }
+    </style>
+</head>
+<body class="feed">
+<article class="card">
+    <header class="card-header">
+        <div class="title">
+            <div class="title-name">
+                Avengers: Infinity War
+            </div>
+            <div class="title-duration">
+                156 minutes
+            </div>
+        </div>
+        <div class="rating">
+            85% <img src="https://www.rottentomatoes.com/assets/pizza-pie/images/icons/global/cf-lg.3c29eff04f2.png" alt="Rotten Tomatoes Badge Fresh">
+        </div>
+    </header>
+
+    <div class="card-content">
+        <img class="card-image" src="https://i.ibb.co/9tLcR7s/avengers.jpg">
+        <a class="card-review-link" href="https://www.rottentomatoes.com/m/avengers_infinity_war" target="_blank">
+            Check review
+        </a>
+    </div>
+
+    <footer class="card-info">
+        <p>
+            An unprecedented cinematic journey ten years in the making and spanning the entire Marvel Cinematic Universe, Marvel Studios' "Avengers: Infinity War" brings to the screen the ultimate, deadliest showdown of all time. The Avengers and their Super Hero allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.
+        </p>
+    </footer>
+</article>
+</body>

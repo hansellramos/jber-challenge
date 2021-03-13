@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CrossKnowledge - Code challenge</title>
+</head>
+<body>
+<script>
+
+    /**
+     * Returns human readable time format
+     * @param date
+     * @param now
+     * @returns {string}
+     * @private
+     */
+    const _format = (date, now) => {
+        const dTime = date.getTime()
+        const nTime = now.getTime()
+        const diff = nTime - dTime
+        const MSPM = 60000
+
+        // is right now
+        if (diff === 0) {
+            return "now";
+        }
+
+        // if lower than 2 seconds
+        if (diff < 2000) {
+            return '1 second ago'
+        }
+
+        // if lower than 1 minute
+        if (diff < MSPM) {
+            const value = Math.floor(diff / MSPM * 60);
+            return `${value} seconds ago`;
+        }
+
+        // if lower than 2 minutes
+        if (diff < 2 * MSPM) {
+            return '1 minute ago'
+        }
+
+        // if lower or equal than 59 minutes or one hour
+        if (diff <= 59 * MSPM) {
+            const value = Math.floor(diff / MSPM)
+            return `${value} minutes ago`
+        }
+
+        // if lower than 2 hours
+        if (diff < 2 * 60 * MSPM) {
+            return '1 hour ago'
+        }
+
+        // if lower than 3600 seconds or 1 hour
+        if (diff < 24 * 60 * MSPM) {
+            const value = Math.floor(diff / 60 / MSPM)
+            return `${value} hours ago`
+        }
+
+        // if lower than 2 days
+        // if (diff < 48 * 60 * MSPM) {
+        //     return '1 day ago'
+        // }
+
+        return date.toISOString()
+    }
+
+    // This will create elements for testing, don't change this code
+    (() => {
+        const MS_PER_MINUTE = 60000
+        const NOW = new Date()
+        let minutes = [0, 1, 30, 60, 6 * 60, 23 * 60, 24 * 60]
+        // let minutes = [0, 1 / 60, 15 / 60, 57 / 60, 1, 30, 59, 60, 119, 6 * 60, 23 * 60, 24 * 60]
+        let dates = []
+
+        minutes.forEach((i) => dates.push(new Date(NOW - i * MS_PER_MINUTE)))
+
+        dates.forEach((item) => {
+            let el = document.createElement("div")
+            el.innerHTML = "Started "
+
+            let dt = document.createElement('span')
+            dt.className = 'js-date-format'
+            dt.innerHTML = item.toISOString()
+            el.appendChild(dt)
+            document.body.appendChild(el)
+        })
+    })();
+
+    setInterval(() => {
+        const NOW = new Date()
+        Array.from(document.getElementsByClassName('js-date-format'))
+            .forEach((element, index, array) => {
+                if (!element.getAttribute('data-date')) {
+                    element.setAttribute('data-date', element.innerHTML.replace('Started ', ''));
+                }
+
+                element.innerHTML = _format(new Date(element.getAttribute('data-date')), NOW);
+            });
+    }, 1000);
+</script>
+</body>
+</html>
